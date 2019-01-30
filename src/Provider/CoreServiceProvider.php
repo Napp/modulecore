@@ -58,6 +58,11 @@ class CoreServiceProvider extends ServiceProvider
     protected $commands = [];
 
     /**
+     * @var array
+     */
+    protected $features = [];
+
+    /**
      * @return void
      */
     public function register()
@@ -90,6 +95,9 @@ class CoreServiceProvider extends ServiceProvider
 
         // Extensions
         $this->registerExtensions($this->extensions);
+
+        // Features
+        $this->registerFeatures($this->features);
 
         // Permissions
         $this->registerPermissions($this->permissions);
@@ -160,6 +168,21 @@ class CoreServiceProvider extends ServiceProvider
                 continue;
             }
             ExtensionRegistrar::addExtension($key, $translation);
+        }
+    }
+
+    /**
+     * @param array $features
+     */
+    protected function registerFeatures(array $features): void
+    {
+        foreach ($features as $key => $translation) {
+            if (\is_array($translation)) {
+                ExtensionRegistrar::addFeature($key, $translation[0], $translation[1]);
+                continue;
+            }
+
+            ExtensionRegistrar::addFeature($key, $translation);
         }
     }
 
