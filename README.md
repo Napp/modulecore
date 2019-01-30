@@ -24,8 +24,18 @@ class FormsServiceProvider extends CoreServiceProvider
     
     public const EXTENSION_FORM_BUILDER = 'extension.form_builder';
     
+    public const FEATURE_ALLOW_SOMETHING = 'feature.form_allow_something';
+    
     protected $repositories = [
         FormsRepositoryInterface::class => FormsRepository::class
+    ];
+    
+    protected $features = [
+        self::FEATURE_ALLOW_SOMETHING => [
+            'translation_key',
+            true // boolean true if the feature has settings    
+        ],
+        self::FEATURE_ALLOW_SOMETHING => 'translation_key'    
     ];
     
     protected $events = [
