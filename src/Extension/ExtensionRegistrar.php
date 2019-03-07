@@ -79,7 +79,7 @@ class ExtensionRegistrar implements ExtensionRegistrarInterface
      */
     public static function getAllFeatures(): array
     {
-        return self::$features;
+        return self::translate(self::$features);
     }
 
     /**
@@ -87,7 +87,19 @@ class ExtensionRegistrar implements ExtensionRegistrarInterface
      */
     public static function getAllExtensions(): array
     {
-        return self::$extensions;
+        return self::translate(self::$extensions);
+    }
+
+    /**
+     * @param array $data
+     * @return array
+     */
+    private static function translate(array $data): array
+    {
+        return array_map(function ($value) {
+            $value['label'] = trans($value['label']);
+            return $value;
+        }, $data);
     }
 
     /**
@@ -115,5 +127,14 @@ class ExtensionRegistrar implements ExtensionRegistrarInterface
     public static function hasSettings($key): bool
     {
         return \in_array($key, self::$settings, true);
+    }
+
+    public static function reset(): self
+    {
+        if (self::$instance === self::$instance) {
+            self::$instance = new self();
+        }
+
+        return self::$instance;
     }
 }
