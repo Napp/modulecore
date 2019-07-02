@@ -5,18 +5,18 @@ return [
      * HTTP Middleware, url prefix
      */
     'http' => [
-        'base_url' => '',
+        'base_url'   => '',
         'middleware' => [
-            'cms' => '',
-            'api' => '',
-            'front' => '',
-            'frontApi' => ''
+            'cms'      => '',
+            'api'      => '',
+            'front'    => '',
+            'frontApi' => '',
         ],
         'prefix' => [
-            'cms' => '',
-            'api' => '',
-            'front' => '',
-            'frontApi' => ''
-        ]
-    ]
+            'cms'      => '',
+            'api'      => '',
+            'front'    => '',
+            'frontApi' => '',
+        ],
+    ],
 ];

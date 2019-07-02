@@ -3,22 +3,21 @@
 namespace Napp\Core\Module\Extension;
 
 /**
- * Interface ExtensionRegistrarInterface
- * @package Napp\Core\Module\Extension
+ * Interface ExtensionRegistrarInterface.
  */
 interface ExtensionRegistrarInterface
 {
     /**
      * @param string $key
      * @param string $label
-     * @param bool $hasSettings
+     * @param bool   $hasSettings
      */
     public static function addExtension(string $key, string $label, bool $hasSettings = false): void;
 
     /**
      * @param string $key
      * @param string $label
-     * @param bool $hasSettings
+     * @param bool   $hasSettings
      */
     public static function addFeature(string $key, string $label, bool $hasSettings = false): void;
 
@@ -31,6 +30,4 @@ interface ExtensionRegistrarInterface
      * @return array
      */
     public static function getAllFeatures(): array;
-
-
 }

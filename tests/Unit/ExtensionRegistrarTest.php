@@ -23,8 +23,8 @@ class ExtensionRegistrarTest extends TestCase
         $this->assertCount(3, $extensions);
 
         $this->assertContains([
-                'key' => 'extension.foo',
-                'label' => 'foo extension'
+                'key'   => 'extension.foo',
+                'label' => 'foo extension',
         ], $extensions);
     }
 
@@ -43,9 +43,9 @@ class ExtensionRegistrarTest extends TestCase
 
         $this->assertEquals([
             [
-                'key' => 'feature.foo',
-                'label' => 'foo feature'
-            ]
+                'key'   => 'feature.foo',
+                'label' => 'foo feature',
+            ],
         ], $extensions);
     }
 
