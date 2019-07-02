@@ -8,8 +8,7 @@ use Napp\Core\Acl\PermissionRegistrar;
 use Napp\Core\Module\Extension\ExtensionRegistrar;
 
 /**
- * Class CoreServiceProvider
- * @package Napp\Core\Module\Provider
+ * Class CoreServiceProvider.
  */
 class CoreServiceProvider extends ServiceProvider
 {
@@ -21,7 +20,7 @@ class CoreServiceProvider extends ServiceProvider
     protected $routeNamespace = '';
 
     /**
-     * Bind Repositories to interfaces
+     * Bind Repositories to interfaces.
      *
      * @var array
      */
@@ -197,33 +196,33 @@ class CoreServiceProvider extends ServiceProvider
     /**
      * @return string
      */
-    protected function getCMSRoutes() {
-
+    protected function getCMSRoutes()
+    {
     }
 
     /**
      * @return string
      */
-    protected function getApiRoutes() {
-
+    protected function getApiRoutes()
+    {
     }
 
     /**
      * @return string
      */
-    protected function getFrontRoutes() {
-
+    protected function getFrontRoutes()
+    {
     }
 
     /**
      * @return string
      */
-    protected function getFrontApiRoutes() {
-
+    protected function getFrontApiRoutes()
+    {
     }
 
     /**
-     * Load route files if not cached
+     * Load route files if not cached.
      */
     protected function loadRoutes()
     {
@@ -235,7 +234,8 @@ class CoreServiceProvider extends ServiceProvider
     /**
      * Define the routes for the application.
      *
-     * @param  \Illuminate\Routing\Router $router
+     * @param \Illuminate\Routing\Router $router
+     *
      * @return void
      */
     public function routes(Router $router)
@@ -243,9 +243,9 @@ class CoreServiceProvider extends ServiceProvider
         $baseUrl = config('module.http.base_url');
 
         $router->group([
-            'namespace' => $this->routeNamespace,
-            'prefix' => config('module.http.prefix.cms'),
-            'middleware' => config('module.http.middleware.cms')
+            'namespace'  => $this->routeNamespace,
+            'prefix'     => config('module.http.prefix.cms'),
+            'middleware' => config('module.http.middleware.cms'),
         ], function (Router $router) {
             $routes = $this->getCMSRoutes();
             if ($routes && file_exists($routes)) {
@@ -254,10 +254,10 @@ class CoreServiceProvider extends ServiceProvider
         });
 
         $router->group([
-            'domain' => "{client}.{$baseUrl}",
-            'namespace' => $this->routeNamespace,
-            'prefix' => config('module.http.prefix.api'),
-            'middleware' => config('module.http.middleware.api')
+            'domain'     => "{client}.{$baseUrl}",
+            'namespace'  => $this->routeNamespace,
+            'prefix'     => config('module.http.prefix.api'),
+            'middleware' => config('module.http.middleware.api'),
         ], function (Router $router) {
             $routes = $this->getApiRoutes();
             if ($routes && file_exists($routes)) {
@@ -266,9 +266,9 @@ class CoreServiceProvider extends ServiceProvider
         });
 
         $router->group([
-            'namespace' => $this->routeNamespace,
-            'prefix' => config('module.http.prefix.front'),
-            'middleware' => config('module.http.middleware.front')
+            'namespace'  => $this->routeNamespace,
+            'prefix'     => config('module.http.prefix.front'),
+            'middleware' => config('module.http.middleware.front'),
         ], function (Router $router) {
             $routes = $this->getFrontRoutes();
             if ($routes && file_exists($routes)) {
@@ -277,10 +277,10 @@ class CoreServiceProvider extends ServiceProvider
         });
 
         $router->group([
-            'domain' => "{client}.{$baseUrl}",
-            'namespace' => $this->routeNamespace,
-            'prefix' => config('module.http.prefix.frontApi'),
-            'middleware' => config('module.http.middleware.frontApi')
+            'domain'     => "{client}.{$baseUrl}",
+            'namespace'  => $this->routeNamespace,
+            'prefix'     => config('module.http.prefix.frontApi'),
+            'middleware' => config('module.http.middleware.frontApi'),
         ], function (Router $router) {
             $routes = $this->getFrontApiRoutes();
             if ($routes && file_exists($routes)) {

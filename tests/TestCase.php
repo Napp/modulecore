@@ -7,7 +7,8 @@ class TestCase extends \Orchestra\Testbench\TestCase
     /**
      * Define environment setup.
      *
-     * @param  \Illuminate\Foundation\Application $app
+     * @param \Illuminate\Foundation\Application $app
+     *
      * @return void
      */
     protected function getEnvironmentSetUp($app)
@@ -16,9 +17,9 @@ class TestCase extends \Orchestra\Testbench\TestCase
 
         // sqlite
         $app['config']->set('database.connections.testing', [
-            'driver' => 'sqlite',
+            'driver'   => 'sqlite',
             'database' => ':memory:',
-            'prefix' => '',
+            'prefix'   => '',
         ]);
         $app['config']->set('database.default', 'testing');
     }

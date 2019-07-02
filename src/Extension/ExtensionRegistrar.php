@@ -3,21 +3,20 @@
 namespace Napp\Core\Module\Extension;
 
 /**
- * Class ExtensionRegistrar
- * @package Napp\Core\Module\Extension
+ * Class ExtensionRegistrar.
  */
 class ExtensionRegistrar implements ExtensionRegistrarInterface
 {
-    /** @var array  */
+    /** @var array */
     protected static $extensions = [];
 
-    /** @var array  */
+    /** @var array */
     protected static $features = [];
 
-    /** @var array  */
+    /** @var array */
     protected static $settings = [];
 
-    /** @var \Napp\Core\Module\Extension\ExtensionRegistrar  */
+    /** @var \Napp\Core\Module\Extension\ExtensionRegistrar */
     private static $instance;
 
     /**
@@ -29,6 +28,7 @@ class ExtensionRegistrar implements ExtensionRegistrarInterface
 
     /**
      * Singleton class instance.
+     *
      * @return \Napp\Core\Module\Extension\ExtensionRegistrar
      */
     public static function getInstance()
@@ -43,13 +43,13 @@ class ExtensionRegistrar implements ExtensionRegistrarInterface
     /**
      * @param string $key
      * @param string $label
-     * @param bool $hasSettings
+     * @param bool   $hasSettings
      */
     public static function addExtension(string $key, string $label, bool $hasSettings = false): void
     {
         self::$extensions[] = [
-            'key' => $key,
-            'label' => $label
+            'key'   => $key,
+            'label' => $label,
         ];
 
         if ($hasSettings) {
@@ -60,13 +60,13 @@ class ExtensionRegistrar implements ExtensionRegistrarInterface
     /**
      * @param string $key
      * @param string $label
-     * @param bool $hasSettings
+     * @param bool   $hasSettings
      */
     public static function addFeature(string $key, string $label, bool $hasSettings = false): void
     {
         self::$features[] = [
-            'key' => $key,
-            'label' => $label
+            'key'   => $key,
+            'label' => $label,
         ];
 
         if ($hasSettings) {
@@ -92,18 +92,21 @@ class ExtensionRegistrar implements ExtensionRegistrarInterface
 
     /**
      * @param array $data
+     *
      * @return array
      */
     private static function translate(array $data): array
     {
         return array_map(function ($value) {
             $value['label'] = trans($value['label']);
+
             return $value;
         }, $data);
     }
 
     /**
      * @param string $key
+     *
      * @return bool
      */
     public static function validateFeatureType(string $key): bool
@@ -113,6 +116,7 @@ class ExtensionRegistrar implements ExtensionRegistrarInterface
 
     /**
      * @param string $key
+     *
      * @return bool
      */
     public static function validateExtensionType(string $key): bool
@@ -122,6 +126,7 @@ class ExtensionRegistrar implements ExtensionRegistrarInterface
 
     /**
      * @param $key
+     *
      * @return bool
      */
     public static function hasSettings($key): bool
