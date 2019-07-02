@@ -33,7 +33,7 @@ class ExtensionRegistrar implements ExtensionRegistrarInterface
      */
     public static function getInstance()
     {
-        if (!null === self::$instance) {
+        if (null === self::$instance) {
             self::$instance = new self();
         }
 
@@ -129,11 +129,12 @@ class ExtensionRegistrar implements ExtensionRegistrarInterface
         return \in_array($key, self::$settings, true);
     }
 
+    /**
+     * @return ExtensionRegistrar
+     */
     public static function reset(): self
     {
-        if (self::$instance === self::$instance) {
-            self::$instance = new self();
-        }
+        self::$instance = new self();
 
         return self::$instance;
     }

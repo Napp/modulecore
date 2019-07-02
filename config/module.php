@@ -1,7 +1,7 @@
 <?php
 
 return [
-    /**
+    /*
      * HTTP Middleware, url prefix
      */
     'http' => [
